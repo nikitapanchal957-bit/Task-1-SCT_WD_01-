@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Landing Page</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+    }
+
+    /* Navigation Bar */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: transparent;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s, box-shadow 0.3s;
+        z-index: 1000;
+    }
+
+    nav.scrolled {
+        background: #333;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    nav .logo {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    nav ul li {
+        margin-left: 20px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 12px;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    nav ul li a:hover {
+        background: white;
+        color: #333;
+        border-radius: 5px;
+    }
+
+    /* Hero Section */
+    .hero {
+        height: 100vh;
+        background: url('https://picsum.photos/1600/900') no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    /* Content Section */
+    section {
+        padding: 50px 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    /* Responsive Menu */
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: #333;
+            width: 200px;
+            display: none;
+        }
+
+        nav ul.show {
+            display: block;
+        }
+
+        nav ul li {
+            margin: 10px 0;
+        }
+
+        .menu-toggle {
+            display: block;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .menu-toggle {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+    <div class="logo">MyBrand</div>
+    <span class="menu-toggle" id="menu-toggle">&#9776;</span>
+    <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero" id="home">
+    <div>
+        <h1>Welcome to Our Landing Page</h1>
+        <p>Your success starts here</p>
+    </div>
+</div>
+
+<!-- About Section -->
+<section id="about">
+    <h2>About Us</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus feugiat orci a tortor consequat, vel sollicitudin sapien ullamcorper.</p>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+    <h2>Our Services</h2>
+    <p>We provide amazing services that help you grow and achieve your dreams.</p>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email us at example@mail.com or call 123-456-7890</p>
+</section>
+
+<script>
+    const navbar = document.getElementById('navbar');
+    const menuToggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    // Change navbar style on scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Toggle mobile menu
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('show');
+    });
+</script>
+
+</body>
+</html>
